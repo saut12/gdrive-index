@@ -12,7 +12,7 @@ const pdf = require("./routes/api");
 require("dotenv").config();
 
 const dev = process.env.NODE_ENV !== "production";
-const PORT = parseInt(process.env.PORT, 10) || 2021;
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 const { AUTH } = dev ? require("./config.json") : process.env;
 const basicauth = Buffer.from(AUTH).toString("base64");
 
