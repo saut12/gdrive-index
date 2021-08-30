@@ -4,10 +4,8 @@ export default function Navbar() {
   return (
     <nav>
       <div className="nav-content">
-        <h1>Gdrive index</h1>
-        <a className="nav-link-github" target="_blank" rel="noopener noreferrer" href="https://github.com/patheticGeek/gdrive-index">
-          <ion-icon name="logo-github" />
-        </a>
+        <h1>SESATTTTTTT</h1>
+  
       </div>
     </nav>
   );

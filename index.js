@@ -3,11 +3,16 @@ const express = require("express");
 const logger = require("./utils/logger");
 const parseCookies = require("./utils/parseCookies");
 const api = require("./routes/api");
+const open = require("./routes/api");
+const wp = require("./routes/api");
+const pdf = require("./routes/api");
+
+
 
 require("dotenv").config();
 
 const dev = process.env.NODE_ENV !== "production";
-const PORT = parseInt(process.env.PORT, 10) || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 2021;
 const { AUTH } = dev ? require("./config.json") : process.env;
 const basicauth = Buffer.from(AUTH).toString("base64");
 
@@ -34,6 +39,12 @@ server.get("/ping", (req, res) => res.send("pong"));
 server.use("/logs", (req, res) => res.sendFile("logs.txt", { root: __dirname }));
 
 server.use("/api", api);
+server.use("/open", open);
+server.use("/wp-content", wp);
+server.use("/download", wp);
+
+
+
 
 server.use("/static", express.static("web/build/static"));
 
@@ -42,7 +53,9 @@ server.get("/checkAuth", (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  res.sendFile("web/build/index.html", { root: __dirname });
+//   res.sendFile("web/build/index.html", { root: __dirname });
+  res.send('Anda tersesat ');
+
 });
 
 server.all("*", (req, res) => res.sendFile("web/build/index.html", { root: __dirname }));
